@@ -1,0 +1,585 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+	MaxWidth="900"
+	x:Class="UTEC.Logger.Views.UtecSettings" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:converters="clr-namespace:UTEC.Logger.Converters" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:UTEC.Logger.Views"
+	Margin="5">
+	<UserControl.Resources>
+		<converters:InverseBooleanToVisibilityConverter
+			x:Key="InverseBooleanToVisibilityConverter" />
+		<Style
+			x:Key="VerticalMargin"
+			TargetType="FrameworkElement">
+			<Setter
+				Property="Margin"
+				Value="0,2,0,2" />
+		</Style>
+		<Style
+			x:Key="H1"
+			TargetType="TextBlock"
+			BasedOn="{StaticResource VerticalMargin}">
+			<Setter
+				Property="FontWeight"
+				Value="Bold" />
+			<Setter
+				Property="FontSize"
+				Value="20" />
+		</Style>
+		<Style
+			x:Key="H2"
+			TargetType="TextBlock">
+			<Setter
+				Property="FontWeight"
+				Value="Bold" />
+			<Setter
+				Property="FontSize"
+				Value="14" />
+		</Style>
+		<Style
+			x:Key="H2Group"
+			TargetType="TextBlock"
+			BasedOn="{StaticResource H2}">
+			<Setter
+				Property="Foreground"
+				Value="White" />
+			<Setter
+				Property="Background"
+				Value="Black" />
+			<Setter
+				Property="TextAlignment"
+				Value="Center" />
+		</Style>
+		<Style
+			x:Key="H2Group2"
+			TargetType="TextBlock"
+			BasedOn="{StaticResource H2}">
+			<Setter
+				Property="Foreground"
+				Value="White" />
+			<Setter
+				Property="Background"
+				Value="Black" />
+			<Setter
+				Property="TextAlignment"
+				Value="Left" />
+			<Setter
+				Property="Padding"
+				Value="5,0,0,0" />
+		</Style>
+		<Style
+			x:Key="BorderTab"
+			TargetType="Border">
+			<Setter
+				Property="Width"
+				Value="200" />
+			<Setter
+				Property="BorderThickness"
+				Value="1" />
+			<Setter
+				Property="BorderBrush"
+				Value="Black" />
+			<Setter
+				Property="Margin"
+				Value="0,0,5,0" />
+		</Style>
+		<Style
+			x:Key="BorderTab2"
+			TargetType="Border">
+			<Setter
+				Property="BorderThickness"
+				Value="1" />
+			<Setter
+				Property="BorderBrush"
+				Value="Black" />
+			<Setter
+				Property="Margin"
+				Value="0,2,0,2" />
+		</Style>
+		<Style
+			TargetType="TextBox"
+			BasedOn="{StaticResource VerticalMargin}" />
+		<Style
+			TargetType="CheckBox"
+			BasedOn="{StaticResource VerticalMargin}" />
+		<Style
+			TargetType="TextBlock"
+			BasedOn="{StaticResource VerticalMargin}" />
+		<Style
+			TargetType="ComboBox"
+			BasedOn="{StaticResource VerticalMargin}" />
+		<Style
+			TargetType="Button"
+			BasedOn="{StaticResource VerticalMargin}">
+			<Setter
+				Property="FontWeight"
+				Value="Bold" />
+			<Setter
+				Property="Margin"
+				Value="2,5,2,5" />
+		</Style>
+		<Style
+			x:Key="btnSaveCancelStyle"
+			BasedOn="{StaticResource {x:Type Button}}"
+			TargetType="Button">
+			<Setter
+				Property="FontSize"
+				Value="18" />
+		</Style>
+		<DataTemplate
+			x:Key="KeyValuePairDataTemplate">
+			<TextBlock
+				Text="{Binding Key}" />
+		</DataTemplate>
+	</UserControl.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="350" />
+			<RowDefinition
+				Height="50" />
+		</Grid.RowDefinitions>
+		<TabControl
+			Grid.Column="0"
+			Grid.Row="0"
+			VerticalAlignment="Stretch"
+			HorizontalAlignment="Stretch"
+			HorizontalContentAlignment="Stretch"
+			VerticalContentAlignment="Stretch"
+			TabStripPlacement="Top">
+			<TabItem
+				Header="General Settings">
+				<StackPanel>
+					<TextBlock
+						Text="General Settings"
+						Style="{StaticResource H1}" />
+					<StackPanel
+						Orientation="Vertical">
+						<Border
+							Style="{StaticResource BorderTab2}">
+							<StackPanel>
+								<TextBlock
+									Text="Persistent Tables"
+									Style="{StaticResource H2Group2}" />
+								<Grid
+									Margin="5">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition />
+										<ColumnDefinition
+											Width="25" />
+									</Grid.ColumnDefinitions>
+									<Grid.RowDefinitions>
+										<RowDefinition />
+									</Grid.RowDefinitions>
+									<TextBox
+										Text="{Binding Settings.GeneralSettings.PersistentTables}" />
+									<Button
+										Grid.Column="1"
+										Content="..."
+										Command="{Binding Path=ShowFilePickerCommand}"
+										CommandParameter="PERSISTENT_TABLES" />
+								</Grid>
+							</StackPanel>
+						</Border>
+						<Border
+							Style="{StaticResource BorderTab2}">
+							<StackPanel>
+								<TextBlock
+									Text="AFR Target Table"
+									Style="{StaticResource H2Group2}" />
+								<Grid
+									Margin="5">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition />
+										<ColumnDefinition
+											Width="25" />
+									</Grid.ColumnDefinitions>
+									<Grid.RowDefinitions>
+										<RowDefinition />
+									</Grid.RowDefinitions>
+									<TextBox
+										Text="{Binding Settings.GeneralSettings.AfrTargetTable}" />
+									<Button
+										Grid.Column="1"
+										Content="..."
+										Command="{Binding Path=ShowFilePickerCommand}"
+										CommandParameter="AFR_TARGET_TABLE" />
+								</Grid>
+							</StackPanel>
+						</Border>
+						<Border
+							Style="{StaticResource BorderTab2}">
+							<StackPanel>
+								<TextBlock
+									Text="Log Output Directory"
+									Style="{StaticResource H2Group2}" />
+								<Grid
+									Margin="5">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition />
+										<ColumnDefinition
+											Width="25" />
+									</Grid.ColumnDefinitions>
+									<Grid.RowDefinitions>
+										<RowDefinition />
+									</Grid.RowDefinitions>
+									<TextBox
+										Text="{Binding Settings.GeneralSettings.LogOutputDirectory}" />
+									<Button
+										Grid.Column="1"
+										Content="..."
+										Command="{Binding Path=ShowFilePickerCommand}"
+										CommandParameter="LOG_OUTPUT_DIRECTORY" />
+								</Grid>
+							</StackPanel>
+						</Border>
+					</StackPanel>
+				</StackPanel>
+			</TabItem>
+			<TabItem
+				Header="Log Settings">
+				<StackPanel>
+					<TextBlock
+						Text="AutoLogger Configuration"
+						Style="{StaticResource H1}" />
+					<StackPanel
+						Orientation="Horizontal">
+						<Border
+							Style="{StaticResource BorderTab}">
+							<StackPanel>
+								<TextBlock
+									Text="Auto Log Conditions"
+									Style="{StaticResource H2Group}" />
+								<Grid
+									Margin="5">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition />
+										<ColumnDefinition />
+									</Grid.ColumnDefinitions>
+									<Grid.RowDefinitions>
+										<RowDefinition />
+										<RowDefinition />
+										<RowDefinition />
+										<RowDefinition />
+										<RowDefinition />
+									</Grid.RowDefinitions>
+									<TextBlock
+										Text="RPM"
+										Grid.Column="0"
+										Grid.Row="0" />
+									<TextBlock
+										Text="Boost"
+										Grid.Column="0"
+										Grid.Row="1" />
+									<TextBlock
+										Text="TPS"
+										Grid.Column="0"
+										Grid.Row="2" />
+									<TextBlock
+										Text="Load"
+										Grid.Column="0"
+										Grid.Row="3" />
+									<TextBlock
+										Text="Conditions to meet before auto-logging begins."
+										Grid.Column="0"
+										Grid.Row="4"
+										Grid.ColumnSpan="2"
+										TextWrapping="Wrap" />
+									<TextBox
+										Grid.Column="1"
+										Grid.Row="0"
+										Text="{Binding Settings.AutoLogSettings.AutoLogConditions.RPM}" />
+									<TextBox
+										Grid.Column="1"
+										Grid.Row="1"
+										Text="{Binding Settings.AutoLogSettings.AutoLogConditions.Boost}" />
+									<TextBox
+										Grid.Column="1"
+										Grid.Row="2"
+										Text="{Binding Settings.AutoLogSettings.AutoLogConditions.TPS}" />
+									<TextBox
+										Grid.Column="1"
+										Grid.Row="3"
+										Text="{Binding Settings.AutoLogSettings.AutoLogConditions.Load}" />
+								</Grid>
+							</StackPanel>
+						</Border>
+						<Border
+							Style="{StaticResource BorderTab}">
+							<StackPanel>
+								<TextBlock
+									Text="Log Save Conditions"
+									Style="{StaticResource H2Group}" />
+								<Grid
+									Margin="5">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition />
+										<ColumnDefinition />
+									</Grid.ColumnDefinitions>
+									<Grid.RowDefinitions>
+										<RowDefinition />
+										<RowDefinition />
+										<RowDefinition />
+										<RowDefinition />
+										<RowDefinition />
+									</Grid.RowDefinitions>
+									<TextBlock
+										Text="RPM"
+										Grid.Column="0"
+										Grid.Row="0" />
+									<TextBlock
+										Text="Boost"
+										Grid.Column="0"
+										Grid.Row="1" />
+									<TextBlock
+										Text="TPS"
+										Grid.Column="0"
+										Grid.Row="2" />
+									<TextBlock
+										Text="Load"
+										Grid.Column="0"
+										Grid.Row="3" />
+									<TextBlock
+										Text="Conditions to meet before saving autolog file."
+										Grid.Column="0"
+										Grid.Row="4"
+										Grid.ColumnSpan="2"
+										TextWrapping="Wrap" />
+									<TextBox
+										Grid.Column="1"
+										Grid.Row="0"
+										Text="{Binding Settings.AutoLogSettings.LogSaveConditions.RPM}" />
+									<TextBox
+										Grid.Column="1"
+										Grid.Row="1"
+										Text="{Binding Settings.AutoLogSettings.LogSaveConditions.Boost}" />
+									<TextBox
+										Grid.Column="1"
+										Grid.Row="2"
+										Text="{Binding Settings.AutoLogSettings.LogSaveConditions.TPS}" />
+									<TextBox
+										Grid.Column="1"
+										Grid.Row="3"
+										Text="{Binding Settings.AutoLogSettings.LogSaveConditions.Load}" />
+								</Grid>
+							</StackPanel>
+						</Border>
+						<Border
+							Style="{StaticResource BorderTab}">
+							<StackPanel>
+								<TextBlock
+									Text="Knock Auto Log &amp; Misc"
+									Style="{StaticResource H2Group}" />
+								<Grid
+									Margin="5">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition />
+										<ColumnDefinition />
+									</Grid.ColumnDefinitions>
+									<Grid.RowDefinitions>
+										<RowDefinition />
+										<RowDefinition />
+										<RowDefinition />
+										<RowDefinition />
+										<RowDefinition />
+									</Grid.RowDefinitions>
+									<TextBlock
+										Text="Autolog Knock"
+										Grid.Column="0"
+										Grid.Row="0" />
+									<TextBlock
+										Text="Knock Threshold"
+										Grid.Column="0"
+										Grid.Row="1" />
+									<TextBlock
+										Text="Table Pulls Only"
+										Grid.Column="0"
+										Grid.Row="2" />
+									<TextBlock
+										Text="Rich AFR Offset"
+										Grid.Column="0"
+										Grid.Row="3" />
+									<TextBlock
+										Text="Lean AFR Offset"
+										Grid.Column="0"
+										Grid.Row="4" />
+									<CheckBox
+										Grid.Column="1"
+										Grid.Row="0"
+										IsChecked="{Binding Settings.AutoLogSettings.AutoLogKnock}" />
+									<TextBox
+										Grid.Column="1"
+										Grid.Row="1"
+										Text="{Binding Settings.AutoLogSettings.KnockThreshold}" />
+									<CheckBox
+										Grid.Column="1"
+										Grid.Row="2"
+										IsChecked="{Binding Settings.AutoLogSettings.TablePullsOnly}" />
+									<TextBox
+										Grid.Column="1"
+										Grid.Row="3"
+										Text="{Binding Settings.AutoLogSettings.RichAfrOffset}" />
+									<TextBox
+										Grid.Column="1"
+										Grid.Row="4"
+										Text="{Binding Settings.AutoLogSettings.LeanAfrOffset}" />
+								</Grid>
+							</StackPanel>
+						</Border>
+						<Border
+							Style="{StaticResource BorderTab}">
+							<StackPanel>
+								<TextBlock
+									Text="Fast-Logging Configuration"
+									Style="{StaticResource H2Group}" />
+								<Grid
+									Margin="5">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition />
+										<ColumnDefinition />
+									</Grid.ColumnDefinitions>
+									<Grid.RowDefinitions>
+										<RowDefinition />
+										<RowDefinition />
+										<RowDefinition />
+									</Grid.RowDefinitions>
+									<TextBlock
+										Text="Fast Logging"
+										Grid.Column="0"
+										Grid.Row="0" />
+									<TextBlock
+										Text="Lines Per Second"
+										Grid.Column="0"
+										Grid.Row="1" />
+									<TextBlock
+										Text="RPM Smoothing"
+										Grid.Column="0"
+										Grid.Row="2"
+										Visibility="Collapsed" />
+									<CheckBox
+										Grid.Column="1"
+										Grid.Row="0"
+										IsChecked="{Binding Settings.AutoLogSettings.FastLogging}" />
+									<ComboBox
+										Grid.Column="1"
+										Grid.Row="1"
+										SelectedItem="{Binding Settings.AutoLogSettings.LinesPerSecond}"
+										ItemsSource="{Binding LinesPerSecondOptions}" />
+									<CheckBox
+										Grid.Column="1"
+										Grid.Row="2"
+										IsChecked="{Binding Settings.AutoLogSettings.RpmSmoothing}"
+										Visibility="Collapsed" />
+								</Grid>
+							</StackPanel>
+						</Border>
+					</StackPanel>
+				</StackPanel>
+			</TabItem>
+			<TabItem
+				Header="Com Port Settings">
+				<StackPanel>
+					<TextBlock
+						Text="Communication Port Settings"
+						Style="{StaticResource H1}" />
+					<StackPanel
+						Orientation="Horizontal"
+						MinHeight="85">
+						<Border
+							Style="{StaticResource BorderTab}">
+							<StackPanel>
+								<TextBlock
+									Text="UTEC"
+									Style="{StaticResource H2Group}" />
+								<Grid
+									Margin="5">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition
+											Width="70" />
+										<ColumnDefinition />
+									</Grid.ColumnDefinitions>
+									<Grid.RowDefinitions>
+										<RowDefinition />
+										<RowDefinition />
+									</Grid.RowDefinitions>
+									<TextBlock
+										Text="Port"
+										Grid.Column="0"
+										Grid.Row="0" />
+									<TextBlock
+										Text="TXS Tuner"
+										Grid.Column="0"
+										Grid.Row="1" />
+									<ComboBox
+										Grid.Column="1"
+										Grid.Row="0"
+										SelectedItem="{Binding Settings.ComPortSettings.ComPort}"
+										ItemsSource="{Binding ComPorts}" />
+									<CheckBox
+										Grid.Column="1"
+										Grid.Row="2"
+										IsChecked="{Binding Settings.ComPortSettings.TXSTuner}" />
+								</Grid>
+							</StackPanel>
+						</Border>
+						<Border
+							Style="{StaticResource BorderTab}"
+							Visibility="{Binding Settings.ComPortSettings.TXSTuner, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+							<StackPanel>
+								<TextBlock
+									Text="External WB"
+									Style="{StaticResource H2Group}" />
+								<Grid
+									Margin="5">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition
+											Width="70" />
+										<ColumnDefinition />
+									</Grid.ColumnDefinitions>
+									<Grid.RowDefinitions>
+										<RowDefinition />
+										<RowDefinition />
+									</Grid.RowDefinitions>
+									<TextBlock
+										Text="External WB"
+										Grid.Column="0"
+										Grid.Row="0" />
+									<TextBlock
+										Text="Port"
+										Grid.Column="0"
+										Grid.Row="1" />
+									<ComboBox
+										Grid.Column="1"
+										Grid.Row="0"
+										SelectedItem="{Binding Settings.ComPortSettings.ExternalWB}"
+										ItemsSource="{Binding WBDataSources}" />
+									<ComboBox
+										Grid.Column="1"
+										Grid.Row="1"
+										SelectedItem="{Binding Settings.ComPortSettings.ExternalWBComPort}"
+										ItemsSource="{Binding ComPorts}" />
+								</Grid>
+							</StackPanel>
+						</Border>
+					</StackPanel>
+				</StackPanel>
+			</TabItem>
+		</TabControl>
+		<Grid
+			Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<Button
+				Content="Save Settings"
+				Style="{StaticResource btnSaveCancelStyle}"
+				Grid.Column="0"
+				Name="button1"
+				Command="{Binding Path=SaveSettingsCommand}" />
+			<Button
+				Content="Cancel"
+				Style="{StaticResource btnSaveCancelStyle}"
+				Grid.Column="1"
+				Command="{Binding Path=CancelSettingsCommand}" />
+		</Grid>
+	</Grid>
+</UserControl>

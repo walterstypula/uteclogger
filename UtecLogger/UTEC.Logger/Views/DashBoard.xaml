@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+	x:Class="UTEC.Logger.Views.DashBoard" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:UTEC.Logger.Views">
+	<UserControl.Resources>
+		<Style
+			x:Key="RawDataBorder"
+			TargetType="Border">
+			<Setter
+				Property="BorderThickness"
+				Value="1" />
+			<Setter
+				Property="BorderBrush"
+				Value="Black" />
+			<Setter
+				Property="Margin"
+				Value="5,0,5,0" />
+		</Style>
+	</UserControl.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="40" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+		<Grid
+			Grid.Row="0">
+			<Border
+				Style="{StaticResource RawDataBorder}">
+				<StackPanel>
+					<TextBlock
+						x:Name="RawData"
+						Text="{Binding UtecData}"
+						Background="#3B3B3B"
+						Foreground="LightGreen" />
+				</StackPanel>
+			</Border>
+		</Grid>
+		<Grid
+			Grid.Row="1">
+			<Grid.Resources>
+				<Style
+					x:Key="ValueLabel"
+					TargetType="TextBlock">
+					<Setter
+						Property="FontSize"
+						Value="20" />
+					<Setter
+						Property="TextAlignment"
+						Value="Center" />
+				</Style>
+				<Style
+					x:Key="Value"
+					BasedOn="{StaticResource ValueLabel}"
+					TargetType="TextBlock">
+					<Setter
+						Property="FontSize"
+						Value="40" />
+					<Setter
+						Property="Padding"
+						Value="5,0,5,2" />
+				</Style>
+			</Grid.Resources>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<StackPanel
+				Grid.Column="0">
+				<TextBlock
+					Style="{StaticResource ValueLabel}"
+					Text="RPM"
+					Foreground="White" />
+				<TextBlock
+					Style="{StaticResource Value}"
+					Text="{Binding RPM}"
+					Foreground="White" />
+			</StackPanel>
+			<StackPanel
+				Grid.Column="1">
+				<TextBlock
+					Style="{StaticResource ValueLabel}"
+					Foreground="White"
+					Text="MAFV" />
+				<TextBlock
+					Style="{StaticResource Value}"
+					Foreground="White"
+					Text="{Binding Path=MAFV}" />
+			</StackPanel>
+			<StackPanel
+				Grid.Column="2">
+				<TextBlock
+					Style="{StaticResource ValueLabel}"
+					Foreground="White"
+					Text="Load" />
+				<TextBlock
+					Style="{StaticResource Value}"
+					Foreground="White"
+					Text="{Binding Path=Load}" />
+			</StackPanel>
+			<StackPanel
+				Grid.Column="3">
+				<TextBlock
+					Style="{StaticResource ValueLabel}"
+					Foreground="White"
+					Text="Mod MAFV" />
+				<TextBlock
+					Style="{StaticResource Value}"
+					Foreground="White"
+					Text="{Binding Path=MODMAFV}" />
+			</StackPanel>
+			<StackPanel
+				Grid.Column="0"
+				Grid.Row="1">
+				<TextBlock
+					Style="{StaticResource ValueLabel}"
+					Foreground="White"
+					Text="AFR" />
+				<TextBlock
+					Style="{StaticResource Value}"
+					Foreground="White"
+					Text="{Binding Path=AFR}" />
+			</StackPanel>
+			<StackPanel
+				Grid.Column="1"
+				Grid.Row="1">
+				<TextBlock
+					Style="{StaticResource ValueLabel}"
+					Foreground="White"
+					Text="IDC" />
+				<TextBlock
+					Style="{StaticResource Value}"
+					Foreground="White"
+					Text="{Binding Path=IDC}" />
+			</StackPanel>
+			<StackPanel
+				Grid.Column="2"
+				Grid.Row="1">
+				<TextBlock
+					Style="{StaticResource ValueLabel}"
+					Foreground="White"
+					Text="Ign" />
+				<TextBlock
+					Style="{StaticResource Value}"
+					Foreground="White"
+					Text="{Binding Path=IGN}" />
+			</StackPanel>
+			<StackPanel
+				Grid.Column="3"
+				Grid.Row="1">
+				<TextBlock
+					Style="{StaticResource ValueLabel}"
+					Foreground="White"
+					Text="Ecu Ign" />
+				<TextBlock
+					Style="{StaticResource Value}"
+					Foreground="White"
+					Text="{Binding Path=ECUIGN}" />
+			</StackPanel>
+			<StackPanel
+				Grid.Column="0"
+				Grid.Row="2">
+				<TextBlock
+					Style="{StaticResource ValueLabel}"
+					Foreground="White"
+					Text="Boost" />
+				<TextBlock
+					Style="{StaticResource Value}"
+					Foreground="White"
+					Text="{Binding Path=Boost}" />
+			</StackPanel>
+			<StackPanel
+				Grid.Column="1"
+				Grid.Row="2">
+				<TextBlock
+					Style="{StaticResource ValueLabel}"
+					Foreground="White"
+					Text="TPS" />
+				<TextBlock
+					Style="{StaticResource Value}"
+					Foreground="White"
+					Text="{Binding Path=TPS}" />
+			</StackPanel>
+			<StackPanel
+				Grid.Column="2"
+				Grid.Row="2">
+				<TextBlock
+					Style="{StaticResource ValueLabel}"
+					Foreground="White"
+					Text="Knock" />
+				<TextBlock
+					Style="{StaticResource Value}"
+					Foreground="White"
+					Text="{Binding Path=Knock}" />
+			</StackPanel>
+			<StackPanel
+				Grid.Column="3"
+				Grid.Row="2">
+				<TextBlock
+					Style="{StaticResource ValueLabel}"
+					Foreground="White"
+					Text="Map VE" />
+				<TextBlock
+					Style="{StaticResource Value}"
+					Foreground="White"
+					Text="{Binding Path=MAPVE}" />
+			</StackPanel>
+		</Grid>
+	</Grid>
+</UserControl>

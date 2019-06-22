@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+	x:Class="UTEC.Logger.Views.Tables" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="clr-namespace:UTEC.Controls;assembly=UTEC.Controls" xmlns:local="clr-namespace:UTEC.Logger.Views" xmlns:converters="clr-namespace:UTEC.Logger.Converters">
+	<UserControl.InputBindings>
+		<KeyBinding
+			Key="X"
+			Modifiers="Alt"
+			Command="{Binding Path=ExitTablesCommand}" />
+		<KeyBinding
+			Key="C"
+			Modifiers="Alt"
+			Command="{Binding Path=ClearTablesCommand}" />
+		<KeyBinding
+			Key="O"
+			Modifiers="Control"
+			Command="{Binding Path=OpenMapCommand}" />
+		<KeyBinding
+			Key="S"
+			Modifiers="Control"
+			Command="{Binding Path=SaveMapCommand}" />
+		<KeyBinding
+			Key="A"
+			Modifiers="Control"
+			Command="{Binding Path=AutoTuneMapCommand}" />
+		<KeyBinding
+			Key="U"
+			Modifiers="Control"
+			Command="{Binding Path=ModifyMapAddCommand}" />
+		<KeyBinding
+			Key="F"
+			Modifiers="Control"
+			Command="{Binding Path=ModifyMapFillCommand}" />
+		<KeyBinding
+			Key="M"
+			Modifiers="Control"
+			Command="{Binding Path=ModifyMapMultiplyCommand}" />
+		<KeyBinding
+			Key="I"
+			Modifiers="Control"
+			Command="{Binding Path=ModifyMapInterpolateVCommand}" />
+		<KeyBinding
+			Key="H"
+			Modifiers="Control"
+			Command="{Binding Path=ModifyMapInterpolateHCommand}" />
+	</UserControl.InputBindings>
+	<UserControl.Resources>
+		<converters:TablesStringAverageConverter
+			x:Key="TablesStringAverageConverter" />
+		<Style
+			TargetType="GroupBox">
+			<Setter
+				Property="Foreground"
+				Value="White" />
+			<Setter
+				Property="FontSize"
+				Value="16" />
+		</Style>
+		<Style
+			TargetType="Button">
+			<Setter
+				Property="FontSize"
+				Value="16" />
+			<Setter
+				Property="FontWeight"
+				Value="Bold" />
+			<Setter
+				Property="Margin"
+				Value="2,2,2,2" />
+			<Setter
+				Property="ContentTemplate">
+				<Setter.Value>
+					<DataTemplate>
+						<TextBlock
+							Text="{Binding}"
+							TextAlignment="Center" />
+					</DataTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style
+			TargetType="controls:DoubleTextBox">
+			<Setter
+				Property="FontSize"
+				Value="16" />
+			<Setter
+				Property="FontWeight"
+				Value="Bold" />
+			<Setter
+				Property="Margin"
+				Value="2,2,2,2" />
+		</Style>
+		<Style
+			TargetType="ListViewItem">
+			<Setter
+				Property="FocusVisualStyle"
+				Value="{x:Null}" />
+			<Setter
+				Property="FontSize"
+				Value="14" />
+			<Setter
+				Property="Template">
+				<Setter.Value>
+					<ControlTemplate
+						TargetType="ListBoxItem">
+						<Border
+							Name="Border">
+							<ContentPresenter />
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger
+								Property="IsSelected"
+								Value="true">
+								<Setter
+									TargetName="Border"
+									Property="Background"
+									Value="Red" />
+								<Setter
+									Property="FontWeight"
+									Value="Bold" />
+								<Setter
+									Property="Foreground"
+									Value="White" />
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</UserControl.Resources>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition
+				Width="500" />
+			<ColumnDefinition
+				Width="150" />
+			<ColumnDefinition
+				Width="150" />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="500" />
+		</Grid.RowDefinitions>
+		<controls:FlexGrid
+			Name="flexGrid"
+			Foreground="White"
+			Grid.Column="0"
+			Grid.Row="0"
+			Data="{Binding Data, Converter={StaticResource TablesStringAverageConverter }}"
+			SelectedCellIndexes="{Binding SelectedCellIndexes}"></controls:FlexGrid>
+		<StackPanel
+			Grid.Column="1"
+			Grid.Row="1"
+			Orientation="Vertical"
+			Margin="5,15,0,0">
+			<StackPanel.Resources>
+				<Style
+					TargetType="TextBlock">
+					<Setter
+						Property="FontSize"
+						Value="15" />
+					<Setter
+						Property="TextAlignment"
+						Value="Center" />
+					<Setter
+						Property="Foreground"
+						Value="White" />
+				</Style>
+			</StackPanel.Resources>
+			<TextBlock
+				Text="Data Tables" />
+			<ListView
+				ItemsSource="{Binding Path=DataTables}"
+				DisplayMemberPath="Key"
+				SelectedItem="{Binding SelectedDataTable}"></ListView>
+			<TextBlock
+				Text="UTEC Map Tables" />
+			<ListView
+				ItemsSource="{Binding Path=UtecMapTables}"
+				DisplayMemberPath="Key"
+				SelectedItem="{Binding SelectedUtecMapTable}"></ListView>
+			<Grid x:Name="Editor" Grid.Column="0" Grid.Row="0" Visibility="Collapsed">
+				<Border BorderBrush="Red" BorderThickness="2" CornerRadius="3" Background="Black">
+					<Grid Margin="3">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="70*"/>
+							<ColumnDefinition Width="30*"/>
+						</Grid.ColumnDefinitions>
+						<controls:DoubleTextBox Grid.Column="0" x:Name="ModifyValue">
+							<controls:DoubleTextBox.InputBindings>
+								<KeyBinding Key="Enter" Command="{Binding ModifyMapActionCommand}" CommandParameter="{Binding ElementName=ModifyValue, Path=Text}"/>
+							</controls:DoubleTextBox.InputBindings>
+						</controls:DoubleTextBox>
+						<Button Grid.Column="1" FontWeight="Normal" Content="{Binding ModifyButtonText}" Command="{Binding ModifyMapActionCommand}" CommandParameter="{Binding ElementName=ModifyValue, Path=Text}"/>
+					</Grid>
+				</Border>
+			</Grid>
+		</StackPanel>
+		<StackPanel
+			Grid.Column="2"
+			Grid.Row="1"
+			Orientation="Vertical"
+			Margin="5,15,0,0">
+			<Button
+				Name="btnClose"
+				Content="Close"
+				Command="{Binding Path=ExitTablesCommand}"></Button>
+			<Button
+				Content="Clear"
+				Command="{Binding Path=ClearTablesCommand}" />
+			<GroupBox
+				Header="UTEC Map">
+				<StackPanel>
+					<Button
+						Content="Open"
+						Command="{Binding Path=OpenMapCommand}" />
+					<Button
+						Content="Save"
+						Command="{Binding Path=SaveMapCommand}" />
+					<Button
+						Content="AutoTune Fuel"
+						Command="{Binding Path=AutoTuneMapCommand}" />
+				</StackPanel>
+			</GroupBox>
+		</StackPanel>
+	</Grid>
+</UserControl>

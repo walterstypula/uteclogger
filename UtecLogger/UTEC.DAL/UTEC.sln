@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+# SharpDevelop 4.0.1.7149
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UTEC.Logger", "UTEC.Logger\UTEC.Logger.csproj", "{58E6915C-F60D-4D02-B39B-5B76F32933B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UTEC.DAL", "UTEC.DAL\UTEC.DAL.csproj", "{A04264B9-3030-46A4-A361-29FAA18DB452}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UTEC.Controls", "Utec.Controls\UTEC.Controls.csproj", "{96F6C663-D8C1-4AAD-B8E8-8E7EA8D7DE3C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58E6915C-F60D-4D02-B39B-5B76F32933B3}.Debug|x86.Build.0 = Debug|x86
+		{58E6915C-F60D-4D02-B39B-5B76F32933B3}.Debug|x86.ActiveCfg = Debug|x86
+		{58E6915C-F60D-4D02-B39B-5B76F32933B3}.Release|x86.Build.0 = Release|x86
+		{58E6915C-F60D-4D02-B39B-5B76F32933B3}.Release|x86.ActiveCfg = Release|x86
+		{A04264B9-3030-46A4-A361-29FAA18DB452}.Debug|x86.Build.0 = Debug|x86
+		{A04264B9-3030-46A4-A361-29FAA18DB452}.Debug|x86.ActiveCfg = Debug|x86
+		{A04264B9-3030-46A4-A361-29FAA18DB452}.Release|x86.Build.0 = Release|x86
+		{A04264B9-3030-46A4-A361-29FAA18DB452}.Release|x86.ActiveCfg = Release|x86
+		{58E6915C-F60D-4D02-B39B-5B76F32933B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58E6915C-F60D-4D02-B39B-5B76F32933B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58E6915C-F60D-4D02-B39B-5B76F32933B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58E6915C-F60D-4D02-B39B-5B76F32933B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96F6C663-D8C1-4AAD-B8E8-8E7EA8D7DE3C}.Debug|x86.Build.0 = Debug|x86
+		{96F6C663-D8C1-4AAD-B8E8-8E7EA8D7DE3C}.Debug|x86.ActiveCfg = Debug|x86
+		{96F6C663-D8C1-4AAD-B8E8-8E7EA8D7DE3C}.Debug|Any CPU.Build.0 = Debug|x86
+		{96F6C663-D8C1-4AAD-B8E8-8E7EA8D7DE3C}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{96F6C663-D8C1-4AAD-B8E8-8E7EA8D7DE3C}.Release|x86.Build.0 = Release|x86
+		{96F6C663-D8C1-4AAD-B8E8-8E7EA8D7DE3C}.Release|x86.ActiveCfg = Release|x86
+		{96F6C663-D8C1-4AAD-B8E8-8E7EA8D7DE3C}.Release|Any CPU.Build.0 = Release|x86
+		{96F6C663-D8C1-4AAD-B8E8-8E7EA8D7DE3C}.Release|Any CPU.ActiveCfg = Release|x86
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<Settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <GeneralSettings>
+    <PersistentTables>Settings\Tables.csv</PersistentTables>
+    <AfrTargetTable>TargetAFR\93oct.csv</AfrTargetTable>
+    <LogOutputDirectory>Logs</LogOutputDirectory>
+  </GeneralSettings>
+  <AutoLogSettings>
+    <AutoLogConditions>
+      <RPM>2000</RPM>
+      <Boost>0</Boost>
+      <Load>0</Load>
+      <TPS>70</TPS>
+    </AutoLogConditions>
+    <LogSaveConditions>
+      <RPM>6000</RPM>
+      <Boost>0</Boost>
+      <Load>0</Load>
+      <TPS>100</TPS>
+    </LogSaveConditions>
+    <AutoLogKnock>true</AutoLogKnock>
+    <KnockThreshold>1</KnockThreshold>
+    <FastLogging>true</FastLogging>
+    <RpmSmoothing>true</RpmSmoothing>
+    <LinesPerSecond>15</LinesPerSecond>
+    <TablePullsOnly>true</TablePullsOnly>
+    <RichAfrOffset>0.1</RichAfrOffset>
+    <LeanAfrOffset>0.1</LeanAfrOffset>
+  </AutoLogSettings>
+  <ComPortSettings>
+    <ComPort>COM1</ComPort>
+    <TXSTuner>false</TXSTuner>
+    <ExternalWB>No Wideband</ExternalWB>
+    <ExternalWBComPort>COM1</ExternalWBComPort>
+  </ComPortSettings>
+</Settings>

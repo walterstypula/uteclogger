@@ -1,0 +1,54 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:controls="clr-namespace:UTEC.Controls"
+>	
+	<Style TargetType="controls:FlexGrid">
+		<Setter Property="Template">
+			<Setter.Value>
+			 <ControlTemplate TargetType="controls:FlexGrid">
+				<Grid x:Name="PART_Grid">
+			 	</Grid>
+			 </ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style TargetType="controls:GridCell">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="controls:GridCell">
+					<Grid>
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="Selection">
+								<VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Selected">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetName="SelectionRectangle"
+                                            Storyboard.TargetProperty="Visibility"
+                                            Duration="0">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                        		<DiscreteObjectKeyFrame.Value>
+                                            		<Visibility>Visible</Visibility>
+                                            	</DiscreteObjectKeyFrame.Value>
+                                        	</DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+								<VisualState x:Name="UnSelected">
+                                </VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<Grid x:Name="SelectionRectangle" Visibility="Collapsed">
+							<Rectangle Fill="Red" />
+						</Grid>
+						<TextBlock x:Name="PART_Label" VerticalAlignment="Center" Margin="2,0,2,0"/>
+						<Rectangle StrokeThickness=".5" Stroke="Gray"/>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>
