@@ -37,14 +37,14 @@ namespace MVVM
         	}
         }
 
-		protected T Get<T>(string property)
+		protected T Get<T>(string property, T defaultValue = default(T))
 		{
 			if(this.properties.ContainsKey(property))
 			{
 				return  (T)this.properties[property];
 			}
 			
-			return default(T);
+			return defaultValue;
 		}
 		
 		public bool IsEqualOrNulls(object objA, object objB)

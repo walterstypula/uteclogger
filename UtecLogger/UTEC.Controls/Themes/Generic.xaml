@@ -1,7 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:controls="clr-namespace:UTEC.Controls"
->	
+>
+    <Style TargetType="controls:LineGraph">
+       
+    </Style>
+    
 	<Style TargetType="controls:FlexGrid">
 		<Setter Property="Template">
 			<Setter.Value>

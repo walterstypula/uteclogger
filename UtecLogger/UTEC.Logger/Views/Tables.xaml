@@ -146,7 +146,9 @@
 			Grid.Column="0"
 			Grid.Row="0"
 			Data="{Binding Data, Converter={StaticResource TablesStringAverageConverter }}"
-			SelectedCellIndexes="{Binding SelectedCellIndexes}"></controls:FlexGrid>
+			SelectedCellIndexes="{Binding SelectedCellIndexes}"
+            Columns="{Binding Columns}"
+            Rows="{Binding Rows}"></controls:FlexGrid>
 		<StackPanel
 			Grid.Column="1"
 			Grid.Row="1"

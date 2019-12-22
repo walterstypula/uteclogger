@@ -103,6 +103,7 @@
     </Compile>
     <Compile Include="AttachedProperties\SelectionBehavior.cs" />
     <Compile Include="Common.cs" />
+    <Compile Include="Converters\DataGridRowDataContextToRowHeaderValueConverter.cs" />
     <Compile Include="Converters\InverseBooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\MainPanelVisibilityConverter.cs" />
     <Compile Include="Converters\TablesStringAverageConverter.cs" />
@@ -110,6 +111,9 @@
     <Compile Include="Helpers\DataTableHelper.cs" />
     <Compile Include="Helpers\TableHelper.cs" />
     <Compile Include="Helpers\UtecMapTableHelper.cs" />
+    <Compile Include="TimingWindow.xaml.cs">
+      <DependentUpon>TimingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\WPFAssemblyInfo.cs" />
@@ -136,6 +140,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="TimingWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\DashBoard.xaml" />
     <Page Include="Views\Tables.xaml" />
     <Page Include="Views\UtecSettings.xaml" />
@@ -159,7 +166,12 @@
       <Name>WidebandSupport</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <DesignDataWithDesignTimeCreatableTypes Include="_DesignTimeData\MainWindowVM.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </DesignDataWithDesignTimeCreatableTypes>
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Logs\test.txt">
